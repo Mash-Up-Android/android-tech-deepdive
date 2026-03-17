@@ -15,7 +15,7 @@
         <td>
             <img src="https://github.com/arinming.png" width="100" height="100">
             <br>
-            <a href="https://github.com/arinming"><I>moonsbsb</I></a>
+            <a href="https://github.com/arinming"><I>arinming</I></a>
         </td>
         <td>
             <img src="https://github.com/juhwankim-dev.png" width="100" height="100">
@@ -25,12 +25,12 @@
         <td>
           <img src="https://github.com/citytexi.png" width="100" height="100">
             <br>
-            <a href="https://github.com/citytexi"><I>simeunseok</I></a>
+            <a href="https://github.com/citytexi"><I>citytexi</I></a>
         </td>
         <td>
             <img src="https://github.com/HamBeomJoon.png" width="100" height="100">
             <br>
-            <a href="https://github.com/HamBeomJoon"><I>JeonK1</I></a>
+            <a href="https://github.com/HamBeomJoon"><I>HamBeomJoon</I></a>
         </td>
     </tr>
 </table>
