@@ -1,7 +1,5 @@
 # Android Tech Deepdive
 
-
-
 ### Members
 
 <table>
@@ -34,3 +32,28 @@
         </td>
     </tr>
 </table>
+
+---
+
+## 📚 레전드 면접 족보 아카이빙
+
+### 아린
+
+#### Week01
+- [test.md](아린/Week01/test.md)
+
+### 주환
+
+#### Week01
+- [test.md](주환/Week01/test.md)
+
+### 희훈
+
+#### Week01
+- [test.md](희훈/Week01/test.md)
+
+### 범준
+
+#### Week01
+- [test.md](범준/Week01/test.md)
+
