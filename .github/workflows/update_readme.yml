@@ -1,0 +1,108 @@
+name: Update README
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Generate README using Bash
+        run: |
+          cat << 'EOF' > README.md
+          # Android Tech Deepdive
+
+          ### Members
+
+          <table>
+              <tr align="center">
+                  <td><B>김아린<B></td>
+                  <td><B>김주환<B></td>
+                  <td><B>전희훈<B></td>
+                  <td><B>함범준<B></td>
+              </tr>
+              <tr align="center">
+                  <td>
+                      <img src="https://github.com/arinming.png" width="100" height="100">
+                      <br>
+                      <a href="https://github.com/arinming"><I>arinming</I></a>
+                  </td>
+                  <td>
+                      <img src="https://github.com/juhwankim-dev.png" width="100" height="100">
+                      <br>
+                      <a href="https://github.com/juhwankim-dev"><I>juhwankim-dev</I></a>
+                  </td>
+                  <td>
+                    <img src="https://github.com/citytexi.png" width="100" height="100">
+                      <br>
+                      <a href="https://github.com/citytexi"><I>citytexi</I></a>
+                  </td>
+                  <td>
+                      <img src="https://github.com/HamBeomJoon.png" width="100" height="100">
+                      <br>
+                      <a href="https://github.com/HamBeomJoon"><I>HamBeomJoon</I></a>
+                  </td>
+              </tr>
+          </table>
+
+          ---
+
+          ## 📚 레전드 면접 족보 아카이빙
+
+          EOF
+
+          MEMBERS=("아린" "주환" "희훈" "범준")
+
+          for member in "${MEMBERS[@]}"; do
+            echo "### ${member}" >> README.md
+            echo "" >> README.md
+
+            if [ -d "$member" ]; then
+              weeks=$(find "$member" -mindepth 1 -maxdepth 1 -type d | sort)
+          
+              if [ -z "$weeks" ]; then
+                echo "아직 작성된 내용이 없어요" >> README.md
+                echo "" >> README.md
+                continue
+              fi
+
+              IFS=$'\n'
+              for week_path in $weeks; do
+                week=$(basename "$week_path")
+                echo "#### ${week}" >> README.md
+
+                files=$(find "$week_path" -mindepth 1 -maxdepth 1 -type f -name "*.md" | sort)
+          
+                if [ -z "$files" ]; then
+                  echo "- " >> README.md
+                else
+                  for file_path in $files; do
+                    file=$(basename "$file_path")
+                    encoded_path=${file_path// /%20}
+                    echo "- [${file}](${encoded_path})" >> README.md
+                  done
+                fi
+                echo "" >> README.md
+              done
+              unset IFS
+            else
+              echo "아직 폴더가 생성되지 않았어요" >> README.md
+              echo "" >> README.md
+            fi
+          done
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: README 자동 업데이트 🤖" || echo "No changes to commit"
+          git push
