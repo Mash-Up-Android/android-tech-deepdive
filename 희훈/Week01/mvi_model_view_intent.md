@@ -265,8 +265,8 @@ e.g. 네비게이션
 
 ## 12. 참고 자료
 
-- [Andre Staltz - Unidirectional Data Flow]("https://staltz.com/unidirectional-user-interface-architectures.html")
-- [Hannes Dorfmann - 반응형 앱 MVI]("https://hannesdorfmann.com/android/mosby3-mvi-1/")
-- [Android 공식 문서 - 앱 아키텍처]("https://developer.android.com/topic/architecture")
-- [Android 공식 문서 - Jetpack Compose UDF 흐름도]("https://developer.android.com/develop/ui/compose/architecture")
-- [Github Orbit-MVI]("https://github.com/orbit-mvi/orbit-mvi")
+- [Andre Staltz - Unidirectional Data Flow](https://staltz.com/unidirectional-user-interface-architectures.html)
+- [Hannes Dorfmann - 반응형 앱 MVI](https://hannesdorfmann.com/android/mosby3-mvi-1/)
+- [Android 공식 문서 - 앱 아키텍처](https://developer.android.com/topic/architecture)
+- [Android 공식 문서 - Jetpack Compose UDF 흐름도](https://developer.android.com/develop/ui/compose/architecture)
+- [Github Orbit-MVI](https://github.com/orbit-mvi/orbit-mvi)
