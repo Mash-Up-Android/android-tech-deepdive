@@ -57,5 +57,7 @@
 ### 범준
 
 #### Week01
+- [Compose기본동작.md](범준/Week01/Compose기본동작.md)
+- [MVI.md](범준/Week01/MVI.md)
 - [test.md](범준/Week01/test.md)
 
