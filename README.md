@@ -51,7 +51,8 @@
 ### 희훈
 
 #### Week01
-- [test.md](희훈/Week01/test.md)
+- [compose_fundamental.md](희훈/Week01/compose_fundamental.md)
+- [mvi_model_view_intent.md](희훈/Week01/mvi_model_view_intent.md)
 
 ### 범준
 
