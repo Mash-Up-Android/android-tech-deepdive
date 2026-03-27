@@ -40,7 +40,8 @@
 ### 아린
 
 #### Week01
-- [test.md](아린/Week01/test.md)
+- [compose.md](아린/Week01/compose.md)
+- [mvi.md](아린/Week01/mvi.md)
 
 ### 주환
 
