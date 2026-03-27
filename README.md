@@ -46,6 +46,8 @@
 ### 주환
 
 #### Week01
+- [compose.md](주환/Week01/compose.md)
+- [mvi.md](주환/Week01/mvi.md)
 - [test.md](주환/Week01/test.md)
 
 ### 희훈
