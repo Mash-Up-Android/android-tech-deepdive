@@ -56,6 +56,9 @@
 - [compose_fundamental.md](희훈/Week01/compose_fundamental.md)
 - [mvi_model_view_intent.md](희훈/Week01/mvi_model_view_intent.md)
 
+#### Week02
+- [di_hilt.md](희훈/Week02/di_hilt.md)
+
 ### 범준
 
 #### Week01
