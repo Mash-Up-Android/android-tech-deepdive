@@ -66,3 +66,6 @@
 - [MVI.md](범준/Week01/MVI.md)
 - [test.md](범준/Week01/test.md)
 
+#### Week02
+- [DI(Hilt).md](범준/Week02/DI(Hilt).md)
+
