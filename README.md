@@ -43,6 +43,9 @@
 - [compose.md](아린/Week01/compose.md)
 - [mvi.md](아린/Week01/mvi.md)
 
+#### Week02
+- [di.md](아린/Week02/di.md)
+
 ### 주환
 
 #### Week01
