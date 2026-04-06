@@ -1,0 +1,130 @@
+## 📌 DI란 무엇이며 왜 사용하나요?
+
+DI(Dependency Injection)는 객체가 필요한 의존성을 스스로 생성하지 않고, 외부에서 주입받는 패턴입니다.
+
+핵심 이유:
+• 느슨한 결합(Loose Coupling): 구현체가 아닌 인터페이스에 의존하게 되어 교체가 쉬움
+• 테스트 용이성: 실제 구현 대신 Mock 객체 주입 가능
+• 재사용성·유지보수성 향상
+
+## 📌 IoC란 무엇인가요?
+
+IoC(Inversion of Control, 제어의 역전): 객체 생성 제어권을 개발자 → 프레임워크로 역전시키는 원칙이며, DI는 IoC를 구현하는 방법 중 하나입니다.
+
+## 📌 Hilt란 무엇이고 Dagger랑 무슨 차이가 있나요?
+
+Hilt는 Google이 안드로이드 전용으로 만든 DI 라이브러리로, Dagger2를 기반으로 하되 안드로이드에 맞게 단순화한 것입니다.
+
+## 📌 @Module과 @InstallIn에 대해 설명해주세요
+
+`@Module` → 어떻게 만드는지 알려주는 곳
+
+Hilt에게 "객체 만들때 이렇게 만들어" 라고 알려주는 클래스입니다.
+
+`@InstallIn` → 어느 컴포넌트(범위)에 설치할지 지정
+
+어떤 생명주기를 따르도록 할건지 결정하는 어노테이션입니다.
+
+## 📌 @Binds와 @Provides의 차이점을 설명해주세요
+
+`@Provides` -> 외부 라이브러리 클래스처럼 직접 생성자에 @Inject를 달 수 없을 때나..
+
+단순 객체 생성이 아니라 로직을 막 추가해야한다거나 빌더패턴처럼 복잡한 코드가 필요할 때
+
+`@Binds` -> Provides를 사용하지 않아도 될때. @Binds는 abstract 함수만 사용 가능
+
+### 🤔 `NetworkModule_ProvideRetrofitFactory.java` 이런 류의 파일이 생성되는 이유
+
+hilt를 사용하다보면 프로젝트 내 전체검색을 했을때 저런 파일들이 잔뜩 보인다.
+
+그 이유는 Provides 어노테이션을 사용하면 hilt가 저런 파일을 만들기 때문이다.
+
+그래서 Provides는 빌드 성능이 상대적으로 느리고
+
+Binds는 코드 생성이 적으며 빠르다.
+
+그래서 @Binds로 대체 가능한 경우엔 @Binds 쓰는 게 빌드 속도나 코드 간결성 면에서 더 좋다.
+
+### 🤔 그럼 hilt는 왜 저런 파일을 만드는데? binds는 왜 안 만드는데?
+
+일단 hilt가 하는 일이 "ㅇㅋ 개발자님이 객체 직접 안 만드셔도 됨. 제가 만들어드림"인데
+
+그럼 어쨌든 객체를 어떻게 만들지 알려주는 코드가 있어야 하고
+
+그 코드가 어딘가에는 존재해야 할거잖아. 그때 그 '어딘가'가 Factory 클래스임.
+
+Binds는 왜 안 만드냐?
+
+개발자: UserRepository 필요한 시점이 오면 UserRepositoryImpl 줘라
+
+hilt: 넵
+
+이렇게 연결만 해주기 때문에 Factory 클래스가 필요 없음
+
+(근데 정확히 하자면 연결된 구현체가 @Inject constructor 가지면 그 구현체 Factory는 생김)
+
+## 📌 Hilt의 컴포넌트 계층
+
+SingletonComponent         (@Singleton)       — Application 생명주기
+  └─ ActivityRetainedComponent (@ActivityRetainedScoped) — 화면 회전 유지
+       └─ ActivityComponent    (@ActivityScoped)  — Activity 생명주기
+            └─ FragmentComponent (@FragmentScoped) — Fragment 생명주기
+  └─ ViewModelComponent       (@ViewModelScoped) — ViewModel 생명주기
+  └─ ServiceComponent         (@ServiceScoped)   — Service 생명주기
+
+뭐 달달 외우고 있진 않고...
+
+스코프가 각각 다르다는 것을 알고 있어서 그때 그때마다 찾아서 쓰고 있습니다 허허
+
+### 🤔 SingletonComponent가 Application의 생명주기를 가진다면, 앱이 실행됨과 동시에 객체가 생성될까?
+
+그렇지 않다.
+
+필요로 하는 시점(Lazy)에 생성된다.
+
+해당 의존성을 처음 주입(inject)할 때 생성된다 !
+
+## 📌 Named, Qualifier 어노테이션에 대해 설명해주세요
+
+같은 타입의 의존성을 여러 개 제공할 때 구분하기 위해 사용합니다.
+
+예를 들어서 retrofit을 리턴하는 함수가 2개가 있으면
+
+retrofit 객체를 필요로 할때 어떤 함수를 사용해서 만들어야 하는지 hilt가 알 수가 없잖아요.
+
+그때 Named 어노테이션을 사용해서 제공하는쪽과 주입받는쪽을 매칭시켜주어 해결할 수 있습니다.
+
+근데 Named가 문자열 기반으로 매칭을 시키는지라... 휴먼에러가 발생할 가능성도 배제할 수 없거든요
+
+그럴때 Qualifier를 사용할 수 있습니다.
+
+hilt가 어떤걸 주입할지 구분하기 위한 커스텀 어노테이션을 만드는 방법입니다.
+
+## 📌 hilt와 koin 중 왜 hilt를 선택하셨나요?
+
+Hilt:
+• 컴파일 타임 검증 → 런타임 오류 없음
+• 코드 생성 기반 → 빌드 시간 증가
+• 안드로이드 생명주기 완벽 통합
+• Google 공식 지원
+
+Koin:
+• 런타임 DSL 기반 → 빌드 빠름, 설정 간단
+• 런타임 오류 가능성 존재
+• 순수 Kotlin, 멀티플랫폼(KMP) 지원
+
+선택 기준:
+→ 대규모 팀·안전성 중시 → Hilt
+→ KMP·빠른 프로토타이핑·소규모 팀 → Koin
+
+가장 큰 이유는 역시 hilt가 컴파일 타임에 검증이 가능해서 안정성이 높다는거고
+
+안드로이드 생명주기를 알고 지원해주니까 거기서 오는 편의성
+
+그리고 훨씬 많은 자료들... 안드로이드 앱을 개발하면서 hilt가 아닌 다른걸 사용할 이유가 딱히 없었습니다.
+
+## 📌 assistedInject란 무엇인가요? 사용해보신 적 있나요?
+
+@AssistedInject는 일부 의존성은 DI 컨테이너가 제공하고, 나머지는 런타임에 직접 전달해야 할 때 사용합니다.
+
+예를 들어 viewModel에서 repository도 주입 받아야하고, 특정 id(런타임에 얻을 수 있는 값)을 주입 받아야할 때 사용하곤 했습니다.
