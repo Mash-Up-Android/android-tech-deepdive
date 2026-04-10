@@ -106,7 +106,7 @@ _state.update { it.copy(count = it.count + 1) }
 ### 3. 상태 전이 규칙의 명확화
 
 - 상태 변경이 reducer로 집중됨
-- 상태가 어떻게 바뀌는지 한 눈에 파악 가능 
+- 상태가 어떻게 바뀌는지 한 눈에 파악 가능
 
 reduce = (currentState, Intent) -> newState
 
@@ -168,6 +168,7 @@ fun onIntent(intent: UiIntent)
 
 > 예: 에러 SnackBar 추가
 >
+
 - UiEffect 추가
 - ViewModel에서 emit 추가
 - UI에서 collect 처리 추가
@@ -241,6 +242,7 @@ class MviViewModel : ViewModel() {
 ```
 
 ## 참고자료
+
 https://haeti.palms.blog/mvi
 
 https://small-stepping.tistory.com/1137

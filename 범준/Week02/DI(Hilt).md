@@ -18,7 +18,7 @@ Hilt는 Dagger 기반의 Android DI 라이브러리로, 복잡한 컴포넌트 �
 - Android 생명주기(Activity, Fragment 등)에 맞는 표준 컴포넌트 제공
 - 컴파일 타임 검증 + 런타임 성능 확보
 
-즉, 개발자가 DI 그래프를 직접 구성하지 않아도안정적으로 의존성 관리가 가능하다.
+즉, 개발자가 DI 그래프를 직접 구성하지 않아도 안정적으로 의존성 관리가 가능하다.
 
 ---
 
@@ -36,6 +36,7 @@ Hilt는 Android 생명주기에 맞는 DI 컨테이너를 제공한다.
 ### Scope
 
 Scope는 동일한 컴포넌트 내에서 같은 인스턴스를 재사용하도록 보장한다.
+
 - @Singleton, @ActivityScoped, @ViewModelScoped 등등
 
 ---

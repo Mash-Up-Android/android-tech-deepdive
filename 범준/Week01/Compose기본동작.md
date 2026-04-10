@@ -7,8 +7,7 @@
 Compose는 상태(State)를 기반으로 UI를 선언하고, 상태 변경 시 State를 읽은 Composable만 재실행(Recomposition)하는 UI 프레임워크이다.
 
 > UI = f(state)
-상태가 변경되면 UI는 자동으로 갱신됨
-
+> 상태가 변경되면 UI는 자동으로 갱신됨
 
 ## 전체 동작 흐름
 
