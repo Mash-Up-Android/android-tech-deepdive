@@ -46,12 +46,18 @@
 #### Week02
 - [di.md](아린/Week02/di.md)
 
+#### Week03
+- [scope.md](아린/Week03/scope.md)
+
 ### 주환
 
 #### Week01
 - [compose.md](주환/Week01/compose.md)
 - [mvi.md](주환/Week01/mvi.md)
 - [test.md](주환/Week01/test.md)
+
+#### Week03
+- 
 
 ### 희훈
 
@@ -61,6 +67,9 @@
 
 #### Week02
 - [di_hilt.md](희훈/Week02/di_hilt.md)
+
+#### Week03
+- [kotlin_flow.md](희훈/Week03/kotlin_flow.md)
 
 ### 범준
 
