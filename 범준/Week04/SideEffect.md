@@ -199,23 +199,24 @@ LaunchedEffect(Unit) {
 
 ---
 
-### 4.1 LaunchedEffect vs rememberCoroutineScope
-
-| 항목        | LaunchedEffect | rememberCoroutineScope |
-|-----------|----------------|------------------------|
-| 실행 시점     | 자동             | 이벤트 기반                 |
-| lifecycle | composition    | composition            |
-| cancel    | key 변경 시       | 직접 관리                  |
+| 항목        | LaunchedEffect                       | rememberCoroutineScope                      |
+|-----------|--------------------------------------|---------------------------------------------|
+| 실행 시점     | Composition 진입 시 자동 실행               | 필요한 시점에 직접 launch                           |
+| lifecycle | Composition에 종속                      | Composition에 종속                             |
+| cancel    | key 변경 또는 Composition 이탈 시 자동 cancel | Composition 이탈 시 자동 cancel, 그 전까지는 직접 제어 가능 |
+| 주 용도      | 초기 로드, collect, key 기반 재실행           | 클릭, 스와이프, 사용자 액션 기반 coroutine 실행            |
 
 ---
 
 ### 4.2 SideEffect vs LaunchedEffect
 
-| 항목      | SideEffect | LaunchedEffect |
-|---------|------------|----------------|
-| suspend | 불가         | 가능             |
-| 실행 타이밍  | commit 이후  | composition 시  |
-| 용도      | 외부 sync    | 비동기 작업         |
+| 항목      | SideEffect                        | LaunchedEffect                       |
+|---------|-----------------------------------|--------------------------------------|
+| suspend | 불가                                | 가능                                   |
+| 실행 타이밍  | recomposition commit 이후 (UI 반영 후) | Composition에 들어온 직후 coroutine launch |
+| 실행 스레드  | Main (즉시 실행)                      | Coroutine (비동기)                      |
+| 재실행 조건  | recomposition 발생 시 매번             | key 변경 시 재실행                         |
+| 용도      | 외부 객체와 값 동기화                      | 비동기 작업 / Flow / one-shot effect      |
 
 ---
 
@@ -223,11 +224,11 @@ LaunchedEffect(Unit) {
 
 Compose + MVI 기준
 
-    ViewModel(State + Business Logic)
+    ViewModel (State + Business Logic)
         ↓
-    Composable(Render)
+    Composable (Render)
         ↓
-    SideEffect(UI 내부에서 lifecycle 기반 실행)
+    SideEffect (UI 내부에서 lifecycle 기반 실행)
 
 ### 역할 분리
 
