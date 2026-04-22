@@ -71,6 +71,9 @@
 #### Week03
 - [kotlin_flow.md](희훈/Week03/kotlin_flow.md)
 
+#### Week04
+- [compose_side_effect_api.md](희훈/Week04/compose_side_effect_api.md)
+
 ### 범준
 
 #### Week01
