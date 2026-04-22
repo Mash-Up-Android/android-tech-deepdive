@@ -49,6 +49,9 @@
 #### Week03
 - [scope.md](아린/Week03/scope.md)
 
+#### Week04
+- [class.md](아린/Week04/class.md)
+
 ### 주환
 
 #### Week01
