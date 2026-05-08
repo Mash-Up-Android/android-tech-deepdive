@@ -356,3 +356,7 @@ withContext(NonCancellable) {
 3. GlobalScope를 지양하는 이유
 4. async 사용 시 await를 호출안하면 뭐가 문제일까요?
 5. CancellationException 주의점
+6. launch와 async의 차이는 무엇인가요?
+7. 구조적 동시성이 무엇인가요?
+8. viewModelScope는 왜 SupervisorJob을 사용할까요?
+9. withContext와 launch의 차이는 무엇인가요?
