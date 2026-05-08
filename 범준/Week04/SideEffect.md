@@ -1,4 +1,4 @@
-              # 5주차 - SideEffect
+# 5주차 - SideEffect
 
 SideEffect는 Composable의 순수성을 유지하면서, 외부 상태와의 상호작용을 lifecycle 기반으로 안전하게 실행하기 위한 API이다.
 
