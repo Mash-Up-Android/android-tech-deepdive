@@ -52,6 +52,9 @@
 #### Week04
 - [class.md](아린/Week04/class.md)
 
+#### Week05
+- [종합문제.md](아린/Week05/종합문제.md)
+
 ### 주환
 
 #### Week01
@@ -64,6 +67,9 @@
 
 #### Week04
 - [class.md](주환/Week04/class.md)
+
+#### Week05
+- [coroutine.md](주환/Week05/coroutine.md)
 
 ### 희훈
 
@@ -79,6 +85,12 @@
 
 #### Week04
 - [compose_side_effect_api.md](희훈/Week04/compose_side_effect_api.md)
+
+#### Week05
+- [CS_영역.md](희훈/Week05/CS_영역.md)
+- [아키텍처_영역.md](희훈/Week05/아키텍처_영역.md)
+- [안드로이드_영역.md](희훈/Week05/안드로이드_영역.md)
+- [코어_영역.md](희훈/Week05/코어_영역.md)
 
 ### 범준
 
